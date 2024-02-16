@@ -9,21 +9,38 @@ public class TodoList {
     static ArrayList<String> list = new ArrayList<>();
     static String name;
     public static void main(String[] args) {
-        System.out.println("+-----------+");
-        System.out.println("| Todo List |");
-        System.out.println("+-----------+");
-        System.out.println("Welcome");
+        System.out.println();
+        System.out.println(" ######    ####    ####      ####             ##        ####     ####    ######  \n" +
+                "   ##     ##  ##   ## ##    ##  ##            ##         ##     ##  ##     ##    \n" +
+                "   ##     ##  ##   ##  ##   ##  ##            ##         ##     ##         ##    \n" +
+                "   ##     ##  ##   ##  ##   ##  ##            ##         ##      ####      ##    \n" +
+                "   ##     ##  ##   ##  ##   ##  ##            ##         ##         ##     ##    \n" +
+                "   ##     ##  ##   ## ##    ##  ##            ##         ##     ##  ##     ##    \n" +
+                "   ##      ####    ####      ####             ######    ####     ####      ##    \n" +
+                "                                                                                 \n");
+
         name = addName();
         displayWelcome();
     }
 
     //Displays the welcome
     static void displayWelcome() {
-        System.out.println("\nPress 1 to add a new task");
-        System.out.println("Press 2 to view the list of tasks");
-        System.out.println("Press 3 to delete tasks");
-        System.out.println("Press 4 to export the tasks to a Text File");
-        System.out.println("Press 5 to exit the application");
+        System.out.println("-------------------------------");
+
+        for (int i = 0; i < 50; i++) {
+            System.out.print("=");
+        }
+
+        System.out.println("\n| --Press 1 to add a new task                    |");
+        System.out.println("| --Press 2 to view the list of tasks            |");
+        System.out.println("| --Press 3 to delete tasks                      |");
+        System.out.println("| --Press 4 to export the tasks to a Text File   |");
+        System.out.println("| --Press 5 to exit the application              |");
+
+        for (int i = 0; i < 50; i++) {
+            System.out.print("=");
+        }
+
         int enteredNumber = 0;
         do {
             System.out.print("\nEnter your choice (1|2|3|4|5): ");
@@ -67,7 +84,8 @@ public class TodoList {
 
     //method to add a task
     static void addTask(){
-        System.out.println("ADD TASK");
+        System.out.println("-------------------------------");
+        System.out.println("Enter you task");
         Scanner entry = new Scanner(System.in);
         String taskName = "";
         taskName = entry.nextLine();
@@ -79,6 +97,7 @@ public class TodoList {
 
     //method to view tasks
     static void viewTask(){
+        System.out.println("-------------------------------");
         System.out.println("\nYour current tasks:");
         System.out.println("");
         for (int i = 0; i < list.size(); i++){
@@ -87,7 +106,7 @@ public class TodoList {
         if (list.size() == 0){
             System.out.println("List is empty!");
         } else {
-            System.out.println("You have " + list.size() + " tasks on your list right now");
+            System.out.println("\nYou have " + list.size() + " tasks on your list right now");
         }
 
         displayWelcome();
@@ -96,6 +115,7 @@ public class TodoList {
 
     //method to delete tasks
     static void deleteTask(){
+        System.out.println("-------------------------------");
         if (list.size() == 0){
             System.out.println("List is empty! No tasks to delete!");
         } else {
@@ -118,7 +138,9 @@ public class TodoList {
         displayWelcome();
     }
 
+    //method to output the task list
     static void export() {
+        System.out.println("-------------------------------");
         if (list.size() == 0) {
             System.out.println("No tasks to export");
         } else {
@@ -140,16 +162,14 @@ public class TodoList {
                     //System.out.println((i + 1) + ". " + list.get(i));
                     Writer.write((i + 1) + ". " + list.get(i) + "\n");
                 }
-
                 Writer.close();
-                System.out.println("Successfully written.");
+                System.out.println("Successfully exported.");
             }
             catch (IOException e) {
                 System.out.println("An error has occurred.");
                 e.printStackTrace();
             }
         }
-
 
         displayWelcome();
     }
